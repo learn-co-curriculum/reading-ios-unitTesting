@@ -186,6 +186,8 @@ One last thing before moving on to standard unit test examples. Let's make sure 
 
 ##### Commonly Used Matchers
 
+###### isEqual
+
 ```objc
 
 // compares objects or primitives x and y and passes if they are identical (==) 
@@ -207,6 +209,9 @@ The `isEqual` matcher does one of two things; either it checks to see if they ar
 
 For instance, if you had an FISCar object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
 
+###### beNil
+
+
 ```objc
 // passes if x is nil.
 expect(x).to.beNil(); 
@@ -215,6 +220,8 @@ expect(x).to.beNil();
 expect([myObject removeFromDataSet]).to.beNil();
 ```
 
+
+###### beTruthy / beFalsy
 
 ```objc
 // passes if x evaluates to true (non-zero).
@@ -229,6 +236,8 @@ expect([Cat canPurr]).to.beTruthy();
 
 ```
 
+###### beInstanceOf
+
 ```objc
 // passes if x is an instance of a class Foo.
 expect(x).to.beInstanceOf([Foo class]); 
@@ -237,6 +246,9 @@ expect(x).to.beInstanceOf([Foo class]);
 FISDog *dog = [FISDog alloc] init]
 expect(dog).to.beInstanceOf([FISDog class]);
 ```
+
+###### beKindOf
+
 
 ```objc
 // passes if x is an instance of a class Foo or if x is an instance of any class 
@@ -247,6 +259,8 @@ expect(x).to.beKindOf([Foo class]);
 FISDog *dog = [FISDog alloc] init]
 expect(dog).to.beKindOf([FISPet class]);
 ```
+
+###### beginWith / startWith / endWith
 
 ```objc
 // passes if an instance of NSString, NSArray, or NSOrderedSet x begins with y. Also aliased 
@@ -268,6 +282,8 @@ expect(myFriends).to.beginWith(@"Joe");
 expect(myFriends).to.endWith(@"Chris");
 ```
 
+###### beIdenticalTo
+
 ```objc
 // compares objects x and y and passes if they are identical and have the 
 // same memory address.
@@ -279,6 +295,8 @@ FISPet *pet = (FISPet *)dog;
 
 expect [dog].to.beIdenticalTo(pet);
 ```
+
+###### contain
 
 ```objc
 // passes if an instance of NSArray or NSString x contains y.
