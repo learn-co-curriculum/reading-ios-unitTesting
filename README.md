@@ -184,8 +184,7 @@ One last thing before moving on to standard unit test examples. Let's make sure 
 #### Standard Unit Tests (Source: [Expecta](https://github.com/specta/expecta) )
 
 
-First a list of the most commonly used unit tests:
-
+##### Commonly Used Matchers
 
 ```objc
 
@@ -292,7 +291,7 @@ expect(@[@"This",@"is",@"my",@"name"]).to.contain(@"is");
 
 ```
 
-And other. less standard, but still interesting things you can match...
+##### Less commonly used matchers, but still interesting
 
 ```objc
 
