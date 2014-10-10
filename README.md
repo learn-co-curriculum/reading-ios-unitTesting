@@ -16,8 +16,6 @@ Unit testing is the first line of defense against creating more headaches for ou
 When we say unit testing, we mean verifying specific units of our code are working as expected. Traditionally in objective-C, by unit we mean a single Class.
 
 
-
-
 ## How to Unit Test
 
 #### Prerequisite: Toolkit
@@ -26,8 +24,9 @@ In order to properly unit test in objective-C, we must first choose our weapon -
 
 Once installed, we also recommend installing the [Specta Template](https://github.com/luiza-cicone/Specta-Templates-Xcode) via [Alcatraz Package Manager](http://alcatraz.io/).
 
+You can then access this template via the File menu, by clicking on "New File" and then choosing "Other" in the left hand panel.
 
-
+![](https://github.com/flatiron-school-curriculum/reading-ios-unitTesting/spectaTemplateScreenshot.png)
 
 #### Prerequisite: File Setup
 
@@ -205,7 +204,7 @@ Something to keep in mind about:
 - (BOOL)isEqual:(id)other
 ```
 
-The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. @5 = @5). If you are trying to use `isEqual` with custom objects, however, you must override the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
+The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. `@5 = @5`). If you are trying to use `isEqual` with custom objects, however, you must override the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
 
 For instance, if you had an FISCar object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
 
