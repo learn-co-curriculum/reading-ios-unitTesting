@@ -105,6 +105,14 @@ The language used to test within an `it` block begins with the word `expect`, an
 
 Note: `it` blocks should generally only contain a single test, i.e. `expect` statement.
 
+Additional note: For a method with arguments, the selector will include the `:` but not the argument names. For instance, if I had the following method...
+
+```
+- (void)doSomethingWithName:(NSString *)name andBirthday:(NSDate *)birthdate
+```
+
+...the selector would be `@selector(doSomethingWithName:AndBirthday:)`.
+
 The cool thing about this test is that by using these nested `describe` and `it` blocks, when we run our tests the first test will read: "FISPet makeASound should be an instance method." Our test results can now be read in plain english.
 
 In our second test, we `expect` that the return value of the method `makeASound` will be an `NSString` and that `NSString` will have the value `@"Pet me!"''
@@ -176,27 +184,117 @@ One last thing before moving on to standard unit test examples. Let's make sure 
 #### Standard Unit Tests (Source: [Expecta](https://github.com/specta/expecta) )
 
 
+First a list of the most commonly used unit tests:
+
+
 ```objc
 
 // compares objects or primitives x and y and passes if they are identical (==) 
 // or equivalent (isEqual:).
 expect(x).to.equal(y); 
 
-// compares objects x and y and passes if they are identical and have the 
-// same memory address.
-expect(x).to.beIdenticalTo(y); 
+//Examples
+expect([@2 integerValue] + [@3 integerValue]).to.equal([@5 integerValue]);
+expect([myObject description]).to.equal(@"This is my object");
+```
 
+Something to keep in mind about:
+
+```objc
+- (BOOL)isEqual:(id)other
+```
+
+The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. @5 = @5). If you are trying to use `isEqual` with custom objects, however, you must override the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
+
+For instance, if you had an FISCar object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
+
+```objc
 // passes if x is nil.
 expect(x).to.beNil(); 
 
+//Examples
+expect([myObject removeFromDataSet]).to.beNil();
+```
+
+
+```objc
 // passes if x evaluates to true (non-zero).
 expect(x).to.beTruthy(); 
 
 // passes if x evaluates to false (zero).
 expect(x).to.beFalsy(); 
 
+//Examples
+expect([Dog canPurr]).to.beFalsy();
+expect([Cat canPurr]).to.beTruthy();
+
+```
+
+```objc
+// passes if x is an instance of a class Foo.
+expect(x).to.beInstanceOf([Foo class]); 
+
+//Examples
+FISDog *dog = [FISDog alloc] init]
+expect(dog).to.beInstanceOf([FISDog class]);
+```
+
+```objc
+// passes if x is an instance of a class Foo or if x is an instance of any class 
+// that inherits from the class Foo.
+expect(x).to.beKindOf([Foo class]); 
+
+//Examples
+FISDog *dog = [FISDog alloc] init]
+expect(dog).to.beKindOf([FISPet class]);
+```
+
+```objc
+// passes if an instance of NSString, NSArray, or NSOrderedSet x begins with y. Also aliased 
+// by startWith
+// the expect argument must be of the same type as the beginWith argument
+expect(x).to.beginWith(y); 
+
+// passes if an instance of NSString, NSArray, or NSOrderedSet x ends with y.
+// the expect argument must be of the same type as the endWith argument
+expect(x).to.endWith(y); 
+
+//Examples
+NSString *myName = @"Zach"
+expect(myName).to.beginWith(@"Za");
+expect(myName).to.endWith(@"ch");
+
+NSArray *myFriends = @[@"Joe",@"Chris",@"Al"];
+expect(myFriends).to.beginWith(@"Joe");
+expect(myFriends).to.endWith(@"Chris");
+```
+
+```objc
+// compares objects x and y and passes if they are identical and have the 
+// same memory address.
+expect(x).to.beIdenticalTo(y); 
+
+Examples:
+FISDog *dog = [FISDog alloc] init];
+FISPet *pet = (FISPet *)dog;
+
+expect [dog].to.beIdenticalTo(pet);
+```
+
+```objc
 // passes if an instance of NSArray or NSString x contains y.
-expect(x).to.contain(y); 
+expect(x).to.contain(y);
+
+Examples:
+
+expect(@"This is my name").to.contain(@"is ");
+expect(@[@"This",@"is",@"my",@"name"]).to.contain(@"is");
+
+```
+
+And other. less standard, but still interesting things you can match...
+
+```objc
 
 // passes if an instance of NSArray, NSSet, NSDictionary or NSOrderedSet x 
 // contains all elements of y.
@@ -209,13 +307,6 @@ expect(x).to.haveCountOf(y);
 // passes if an instance of NSArray, NSSet, NSDictionary or NSString x has 
 // a count or length of 0.
 expect(x).to.beEmpty(); 
-
-// passes if x is an instance of a class Foo.
-expect(x).to.beInstanceOf([Foo class]); 
-
-// passes if x is an instance of a class Foo or if x is an instance of any class 
-// that inherits from the class Foo.
-expect(x).to.beKindOf([Foo class]); 
 
 // passes if the class Foo is a subclass of the class Bar or if it is identical to 
 // the class Bar. 
@@ -262,13 +353,6 @@ expect(^{ /* code */ }).to.notify(@"NotificationName");
 // notification.
 expect(^{ /* code */ }).to.notify(notification); 
 
-// passes if an instance of NSString, NSArray, or NSOrderedSet x begins with y. Also aliased 
-// by startWith
-expect(x).to.beginWith(y); 
-
-// passes if an instance of NSString, NSArray, or NSOrderedSet x ends with y.
-expect(x).to.endWith(y); 
-
 ```
 
 ## Unexpected Behaviors
@@ -282,4 +366,4 @@ expect(x).to.endWith(y);
 
 ## Common Error Messages
 
-- We've all done this one before: Opening the .xcodeproj instead of the .xcworkspace and attempting to test. Your testing frameworks will not be a part of the project. You will get an Apple Mach-O Linker Error and in the detail see something that says "library not found for -lPods..." This is a good sign that all you have to do is close down the xcodeproj and open up the xcworkspace and you'll be back in business!
+- We've all done this one before: Opening the .xcodeproj instead of the .xcworkspace and attempting to test. Your testing frameworks will not be a part of the project. You will get an `Apple Mach-O Linker Error` and in the detail see something that says `library not found for -lPods...` This is a good sign that all you have to do is close down the xcodeproj and open up the xcworkspace and you'll be back in business!
