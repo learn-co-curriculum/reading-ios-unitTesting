@@ -22,9 +22,9 @@ When we say unit testing, we mean verifying specific units of our code are worki
 
 In order to properly unit test in objective-C, we must first choose our weapon -- the testing spec library we will use to write our tests. At the Flatiron School, we use the combination of [Specta](https://github.com/specta/specta) and [Expecta](https://github.com/specta/expecta). We recommend installing these libraries through [Cocoapods](http://cocoapods.org/).
 
-Once installed, we also recommend installing the [Specta Template](https://github.com/luiza-cicone/Specta-Templates-Xcode) via [Alcatraz Package Manager](http://alcatraz.io/).
+Once installed, we also recommend installing the [Specta Spec](https://github.com/luiza-cicone/Specta-Templates-Xcode) via [Alcatraz Package Manager](http://alcatraz.io/).
 
-You can then access this template via the File menu, by clicking on "New File" and then choosing "Other" in the left hand panel.
+You can then access this template via the File menu, by clicking on "New File" and then choosing "Specta Templates" in the left hand panel.
 
 ![](https://github.com/flatiron-school-curriculum/reading-ios-unitTesting/blob/master/spectaTemplateScreenshot.png)
 
