@@ -263,8 +263,8 @@ expect(dog).to.beKindOf([FISPet class]);
 ###### beginWith / startWith / endWith
 
 ```objc
-// passes if an instance of NSString, NSArray, or NSOrderedSet x begins with y. Also aliased 
-// by startWith
+// passes if an instance of NSString, NSArray, or NSOrderedSet x begins with y.
+// also aliased by startWith
 // the expect argument must be of the same type as the beginWith argument
 expect(x).to.beginWith(y); 
 
@@ -287,13 +287,14 @@ expect(myFriends).to.endWith(@"Chris");
 ```objc
 // compares objects x and y and passes if they are identical and have the 
 // same memory address.
+
 expect(x).to.beIdenticalTo(y); 
 
-Examples:
+// Examples:
 FISDog *dog = [FISDog alloc] init];
 FISPet *pet = (FISPet *)dog;
 
-expect [dog].to.beIdenticalTo(pet);
+expect(dog).to.beIdenticalTo(pet);
 ```
 
 ###### contain
@@ -302,7 +303,7 @@ expect [dog].to.beIdenticalTo(pet);
 // passes if an instance of NSArray or NSString x contains y.
 expect(x).to.contain(y);
 
-Examples:
+// Examples:
 
 expect(@"This is my name").to.contain(@"is ");
 expect(@[@"This",@"is",@"my",@"name"]).to.contain(@"is");
