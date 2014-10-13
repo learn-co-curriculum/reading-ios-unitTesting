@@ -26,7 +26,7 @@ Once installed, we also recommend installing the [Specta Spec](https://github.co
 
 You can then access this template via the File menu, by clicking on "New File" and then choosing "Specta Templates" in the left hand panel.
 
-![](http://ironboard-curriculum-content.s3.amazonaws.com/iOS/spectaTemplateScreenshot.png)
+![](https://github.com/flatiron-school-curriculum/reading-ios-unitTesting/blob/master/spectaTemplateScreenshot.png)
 
 #### Prerequisite: File Setup
 
@@ -41,7 +41,7 @@ Upon opening the Specta Template, there are only a few steps in order to get up 
 SpecBegin(<The class you are testing goes here, without the extension>)
 ```
 
-Note: It is important that you define `EXP_SHORTHAND` before importing the `Expecta.h` file in the code.
+**Note: It is important that you define `EXP_SHORTHAND` before importing the `Expecta.h` file in the code.
 
 
 #### How to Write Useful Tests
@@ -175,7 +175,7 @@ For safety, and this will be further elaborated upon in a lesson on blocks, vari
 
 Now back to our regularly scheduled program...
 
-One last thing before moving on to standard unit test examples. Let's make sure we're all clear on when to use `beforeAll` / `afterAll` vs. `beforeEach` / `afterEach`. Using `all` means that if we initialize a variable there, and we make changes to this variable in the tests, those changes will persist. `beforeEach` is more like having a new instance in each test, as we did earlier in this tutorial.
+One last thing before moving on to standard unit test examples. Let's make sure we're all clear on when to use `beforeAll` / `afterAll` vs. `beforeEach` / `afterEach`. Using `all` means that if we initialize a variable there, and we make changes to this variable in the tests, those changes will persist. `beforeEach` is more like having a new instance in each test, as we did earlier in this tutorial. Also, you can have all of these `beforeAll` / `afterAll` etc.. block inside any `describe` block.
 
 
 
