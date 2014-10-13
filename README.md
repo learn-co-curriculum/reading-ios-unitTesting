@@ -204,9 +204,9 @@ Something to keep in mind about:
 - (BOOL)isEqual:(id)other
 ```
 
-The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. `@5 = @5`). If you are trying to use `isEqual` with custom objects, however, you must override the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
+The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. `@5 = @5`). If you are trying to use `isEqual` with custom objects, however, you must [override](http://nshipster.com/equality/) the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
 
-For instance, if you had an FISCar object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
+For instance, if you had an `FISCar` object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
 
 ###### beNil
 
