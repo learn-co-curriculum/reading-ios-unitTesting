@@ -4,16 +4,16 @@
 
 Ahh testing. Here's a topic that warrants an entire book. Or bookshelf.
 
-As a programmer, we are often in the weeds, writing new code, and more frequently editing existing code for that new feature set, bug we found yesterday, or requested changes from our designer . Whatever the case, it can be a challenge to take a step back and think about the requirements of our projects, and how best to implement the logic we are attempting to type in our text editors.
+As a programmer, we are often in the weeds, writing new code, and more frequently editing existing code for that new feature set, bug we found yesterday, or requested changes from our designer. Whatever the case, it can be a challenge to take a step back and think about the requirements of our projects, and how best to implement the logic we are attempting to type in our text editors.
 
 Additionally, if we make a change to a code base, how do we know for sure we haven't upset those requirements, and / or various dependencies on our code?
 
 
 ## What is Unit Testing?
 
-Unit testing is the first line of defense against creating more headaches for ourselves as developers than we were initially trying to solve for.
+Unit testing is the first line of defense against creating more headaches for ourselves as developers than we were initially trying to solve for. [There](http://www.onjava.com/pub/a/onjava/2003/04/02/javaxpckbk.html) [are](http://simpleprogrammer.com/2010/10/15/the-purpose-of-unit-testing/) [plenty](http://stackoverflow.com/a/67500/1169547) [of](http://martinfowler.com/bliki/UnitTest.html) [great](http://www.infoq.com/articles/why-testing-matters-agile) [reasons](http://agilepainrelief.com/notesfromatooluser/2008/10/advantages-of-tdd.html#.VDvflildUac) [to](http://sd.jtimothyking.com/2006/07/11/twelve-benefits-of-writing-unit-tests-first/) [test](http://en.wikipedia.org/wiki/Unit_testing#Benefits).
 
-When we say unit testing, we mean verifying specific units of our code are working as expected. Traditionally in objective-C, by unit we mean a single Class.
+When we say unit testing, we mean verifying specific units of our code are working as expected. Traditionally in Objective-C, by unit we mean a single Class.
 
 
 ## How to Unit Test
@@ -41,7 +41,7 @@ Upon opening the Specta Template, there are only a few steps in order to get up 
 SpecBegin(<The class you are testing goes here, without the extension>)
 ```
 
-Note: It is important that you define `EXP_SHORTHAND` before importing the `Expecta.h` file in the code.
+**Note: It is important that you define `EXP_SHORTHAND` before importing the `Expecta.h` file in the code.
 
 
 #### How to Write Useful Tests
@@ -175,7 +175,7 @@ For safety, and this will be further elaborated upon in a lesson on blocks, vari
 
 Now back to our regularly scheduled program...
 
-One last thing before moving on to standard unit test examples. Let's make sure we're all clear on when to use `beforeAll` / `afterAll` vs. `beforeEach` / `afterEach`. Using `all` means that if we initialize a variable there, and we make changes to this variable in the tests, those changes will persist. `beforeEach` is more like having a new instance in each test, as we did earlier in this tutorial.
+One last thing before moving on to standard unit test examples. Let's make sure we're all clear on when to use `beforeAll` / `afterAll` vs. `beforeEach` / `afterEach`. Using `all` means that if we initialize a variable there, and we make changes to this variable in the tests, those changes will persist. `beforeEach` is more like having a new instance in each test, as we did earlier in this tutorial. Also, you can have all of these `beforeAll` / `afterAll` etc.. block inside any `describe` block.
 
 
 
@@ -204,9 +204,9 @@ Something to keep in mind about:
 - (BOOL)isEqual:(id)other
 ```
 
-The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. `@5 = @5`). If you are trying to use `isEqual` with custom objects, however, you must override the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
+The `isEqual` matcher does one of two things; either it checks to see if they are `==` the same (as in the same memory address), or that the objects evaluate to the same value (e.g. `@5 = @5`). If you are trying to use `isEqual` with custom objects, however, you must [override](http://nshipster.com/equality/) the `isEqual` method of `NSObject` so that the matcher knows how to evaluate the equivalency.
 
-For instance, if you had an FISCar object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
+For instance, if you had an `FISCar` object, you might want to check in your `isEqual` override that the model, year, and color are all the same, and only then return YES, to determine equality.
 
 ###### beNil
 
@@ -277,8 +277,8 @@ expect(myName).to.beginWith(@"Za");
 expect(myName).to.endWith(@"ch");
 
 NSArray *myFriends = @[@"Joe",@"Chris",@"Al"];
-expect(myFriends).to.beginWith(@"Joe");
-expect(myFriends).to.endWith(@"Chris");
+expect(myFriends).to.beginWith(@[@"Joe"]);
+expect(myFriends).to.endWith(@[@"Chris"]);
 ```
 
 ###### beIdenticalTo
@@ -305,7 +305,7 @@ expect(x).to.contain(y);
 // Examples:
 
 expect(@"This is my name").to.contain(@"is ");
-expect(@[@"This",@"is",@"my",@"name"]).to.contain(@"is");
+expect(@[@"This",@"is",@"my",@"name"]).to.contain(@[@"is"]);
 
 ```
 
@@ -379,6 +379,8 @@ expect(^{ /* code */ }).to.notify(notification);
 - Tests will be ignored if not written appropriately inside of an `it` block. So you might think they are passing when they are effectively not even part of the tests. Make sure all tests are written inside `it` blocks!
 
 - Tests do not run in a specified order. This is particularly an issue because you might think that you can use a `beforeAll` block when they need a `beforeEach` block, simply because their tests run in an order that affects the state of the variable you created before the tests began in a way you are not expecting. Make sure you consider the state of the program for each test independently from every other.
+
+- Sometimes all of your tests in the test navigator will just stop showing up. This is a bug in XCode. Restart XCode to fix this.
 
 
 ## Common Error Messages
