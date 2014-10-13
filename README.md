@@ -305,7 +305,7 @@ expect(x).to.contain(y);
 // Examples:
 
 expect(@"This is my name").to.contain(@"is ");
-expect(@[@"This",@"is",@"my",@"name"]).to.contain(@"is");
+expect(@[@"This",@"is",@"my",@"name"]).to.contain(@[@"is"]);
 
 ```
 
