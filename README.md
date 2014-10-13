@@ -380,6 +380,8 @@ expect(^{ /* code */ }).to.notify(notification);
 
 - Tests do not run in a specified order. This is particularly an issue because you might think that you can use a `beforeAll` block when they need a `beforeEach` block, simply because their tests run in an order that affects the state of the variable you created before the tests began in a way you are not expecting. Make sure you consider the state of the program for each test independently from every other.
 
+- Sometimes all of your tests in the test navigator will just stop showing up. This is a bug in XCode. Restart XCode to fix this.
+
 
 ## Common Error Messages
 
