@@ -277,8 +277,8 @@ expect(myName).to.beginWith(@"Za");
 expect(myName).to.endWith(@"ch");
 
 NSArray *myFriends = @[@"Joe",@"Chris",@"Al"];
-expect(myFriends).to.beginWith(@"Joe");
-expect(myFriends).to.endWith(@"Chris");
+expect(myFriends).to.beginWith(@[@"Joe"]);
+expect(myFriends).to.endWith(@[@"Chris"]);
 ```
 
 ###### beIdenticalTo
