@@ -4,16 +4,16 @@
 
 Ahh testing. Here's a topic that warrants an entire book. Or bookshelf.
 
-As a programmer, we are often in the weeds, writing new code, and more frequently editing existing code for that new feature set, bug we found yesterday, or requested changes from our designer . Whatever the case, it can be a challenge to take a step back and think about the requirements of our projects, and how best to implement the logic we are attempting to type in our text editors.
+As a programmer, we are often in the weeds, writing new code, and more frequently editing existing code for that new feature set, bug we found yesterday, or requested changes from our designer. Whatever the case, it can be a challenge to take a step back and think about the requirements of our projects, and how best to implement the logic we are attempting to type in our text editors.
 
 Additionally, if we make a change to a code base, how do we know for sure we haven't upset those requirements, and / or various dependencies on our code?
 
 
 ## What is Unit Testing?
 
-Unit testing is the first line of defense against creating more headaches for ourselves as developers than we were initially trying to solve for.
+Unit testing is the first line of defense against creating more headaches for ourselves as developers than we were initially trying to solve for. [There](http://www.onjava.com/pub/a/onjava/2003/04/02/javaxpckbk.html) [are](http://simpleprogrammer.com/2010/10/15/the-purpose-of-unit-testing/) [plenty](http://stackoverflow.com/a/67500/1169547) [of](http://martinfowler.com/bliki/UnitTest.html) [great](http://www.infoq.com/articles/why-testing-matters-agile) [reasons](http://agilepainrelief.com/notesfromatooluser/2008/10/advantages-of-tdd.html#.VDvflildUac) [to](http://sd.jtimothyking.com/2006/07/11/twelve-benefits-of-writing-unit-tests-first/) [test](http://en.wikipedia.org/wiki/Unit_testing#Benefits).
 
-When we say unit testing, we mean verifying specific units of our code are working as expected. Traditionally in objective-C, by unit we mean a single Class.
+When we say unit testing, we mean verifying specific units of our code are working as expected. Traditionally in Objective-C, by unit we mean a single Class.
 
 
 ## How to Unit Test
