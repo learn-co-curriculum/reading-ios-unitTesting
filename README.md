@@ -277,8 +277,8 @@ expect(myName).to.beginWith(@"Za");
 expect(myName).to.endWith(@"ch");
 
 NSArray *myFriends = @[@"Joe",@"Chris",@"Al"];
-expect(myFriends).to.beginWith(@"Joe");
-expect(myFriends).to.endWith(@"Chris");
+expect(myFriends).to.beginWith(@[@"Joe"]);
+expect(myFriends).to.endWith(@[@"Al"]);
 ```
 
 ###### beIdenticalTo
@@ -305,7 +305,9 @@ expect(x).to.contain(y);
 // Examples:
 
 expect(@"This is my name").to.contain(@"is ");
-expect(@[@"This",@"is",@"my",@"name"]).to.contain(@"is");
+
+NSArray *myNameSentence = @[@"This",@"is",@"my",@"name"];
+expect(myNameSentence).to.contain(@"is");
 
 ```
 
