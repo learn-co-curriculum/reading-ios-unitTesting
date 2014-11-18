@@ -386,3 +386,31 @@ expect(^{ /* code */ }).to.notify(notification);
 ## Common Error Messages
 
 - We've all done this one before: Opening the .xcodeproj instead of the .xcworkspace and attempting to test. Your testing frameworks will not be a part of the project. You will get an `Apple Mach-O Linker Error` and in the detail see something that says `library not found for -lPods...` This is a good sign that all you have to do is close down the xcodeproj and open up the xcworkspace and you'll be back in business!
+
+## Selectors in Unit Tests
+
+When we are trying to test our methods, the first step to testing if the method works or not is to see *if it exists at all*. To do this we will need some sort of matcher, and then be able to pass in a method name as an argument to that matcher. Objective-C allows us to pass in method names as arguments through the use of selectors. For example, if we were checking to see a method declared like this
+
+```objc
+- (void)myMethod
+```
+
+existed, we would use the following Expecta matcher:
+
+```
+expect(myObject).to.respondTo(@selector(myMethod));
+```
+
+You'll notice the selector is just the method name wrapped in a `@selector()`. If we wanted to work with a method that took one parameter that is declared like this:
+
+```
+- (void)myMethod:(NSString *)myArgument
+```
+
+We now have to include the `:` that denotes it takes one argument. So the selector would be `@selector(myMethod:)`. Notice the colon! Now if we want multiple arguments, we would declare our method like this:
+
+```
+- (void)myMethod:(NSString *)argumentOne MethodArgTwo:(NSArray *)argumentTwo
+```
+
+and the selector becomes `@selector(myMethod:MethodArgTwo:)`.
