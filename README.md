@@ -397,19 +397,19 @@ When we are trying to test our methods, the first step to testing if the method 
 
 existed, we would use the following Expecta matcher:
 
-```
+```objc
 expect(myObject).to.respondTo(@selector(myMethod));
 ```
 
 You'll notice the selector is just the method name wrapped in a `@selector()`. If we wanted to work with a method that took one parameter that is declared like this:
 
-```
+```objc
 - (void)myMethod:(NSString *)myArgument
 ```
 
 We now have to include the `:` that denotes it takes one argument. So the selector would be `@selector(myMethod:)`. Notice the colon! Now if we want multiple arguments, we would declare our method like this:
 
-```
+```objc
 - (void)myMethod:(NSString *)argumentOne MethodArgTwo:(NSArray *)argumentTwo
 ```
 
