@@ -26,7 +26,7 @@ Once installed, we also recommend installing the [Specta Spec](https://github.co
 
 You can then access this template via the File menu, by clicking on "New File" and then choosing "Specta Templates" in the left hand panel.
 
-![](https://github.com/flatiron-school-curriculum/reading-ios-unitTesting/blob/master/spectaTemplateScreenshot.png)
+![](https://github.com/learn-co-curriculum/reading-ios-unitTesting/blob/master/spectaTemplateScreenshot.png)
 
 #### Prerequisite: File Setup
 
