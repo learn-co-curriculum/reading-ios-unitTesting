@@ -415,4 +415,4 @@ We now have to include the `:` that denotes it takes one argument. So the select
 
 and the selector becomes `@selector(myMethod:MethodArgTwo:)`.
 
-<a href='https://learn.co/lessons/reading-ios-unitTesting' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/reading-ios-unitTesting' title='Unit testing'>Unit testing</a> on Learn.co and start learning to code for free.</p>
